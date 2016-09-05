@@ -11,9 +11,12 @@ def process_html(input_file, output_file):
         #data_content.append(item["data-content"])
         data_content.append((item["data-content"]).encode('utf-8', 'ignore'))
 
-
-    write_csv(output_file, data_content)
-
+    i = 0
+    while data_content:
+        write_csv(output_file, data_content[0:5])
+        data_content = data_content[5:]
+        i = i +1
+        print i
 
 
 def read_file(my_file):
@@ -30,10 +33,10 @@ def write_txt(output, data):
     print "wrote to text file"
 
 def write_csv(output, data):
-    fp = open(output, 'wa')
+    fp = open(output, 'a')
     a = csv.writer(fp)
     a.writerow(data)
-    a.writerow('\n')
+    #a.writerow('\n')
     fp.close()
     print "wrote to csv file"
 
