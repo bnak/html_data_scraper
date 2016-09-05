@@ -5,10 +5,8 @@ import functions
 def main():
     config = {}
     execfile("./ignore_files/project.conf", config)
-    # print config["value1"]
 
-    my_file = "/Users/bethnakamura/Projects/html_data_scraper/ignore_files/ge-sr-software-capabilty.txt"
-    print functions.read_file(my_file)
+    functions.process_html(''.join(config["input"]).encode('utf-8').strip(), ''.join(config["output"]).encode('utf-8').strip())
     print "Main function ran"
 
 
